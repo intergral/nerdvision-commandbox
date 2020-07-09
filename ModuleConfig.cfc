@@ -15,7 +15,7 @@ component {
 	// Create nv folder for server
 	directoryCreate( serverInfo.serverHomeDirectory & 'nv/', true, true );
 
-        url = "https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.nerdvision&a=agent&v=LATEST"
+        var url = "https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.nerdvision&a=agent&v=LATEST"
         // download the latest version of nv : https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.nerdvision&a=agent&v=LATEST
         cfhttp( method='GET', getasbinary='true', url='#url#', path=serverInfo.serverHomeDirectory & 'nv/', file='nerdvision.jar')
 
