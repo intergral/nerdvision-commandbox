@@ -59,8 +59,5 @@
         "verbose":true,
         "watchDelay":500,
         "watchPaths":"**.cfc"
-    },
-    "createPackageDirectory":"false",
-    "directory":"nv",
-    "packageDirectory":"nv"
+    }
 }
