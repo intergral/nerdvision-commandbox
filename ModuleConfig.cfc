@@ -3,8 +3,9 @@ component {
     function configure()
     {
         settings = {
+            version = 'LATEST',
             apiKey = "",
-            name = "nerd.vision",
+            name = "",
             tags = []
         };
     }
@@ -32,14 +33,20 @@ component {
 
         var serverInfo = arguments.interceptData.serverInfo;
 
-        // Create nv folder for server
-        directoryCreate(serverInfo.serverHomeDirectory & 'nv/', true, true);
+        // Create a folder for the nerdvision.jar
+        var nvTargetDir = serverInfo.serverHomeDirectory & '/nv/';
+        directoryCreate( nvTargetDir, true, true );
+        log.info('nerd.vision directory is #nvTargetDir#');
 
-        var url = "https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.nerdvision&a=agent&v=LATEST";
-        // download the latest version of nv : https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.nerdvision&a=agent&v=LATEST
-        cfhttp(method = 'GET', getasbinary = 'true', url = '#url#', path = serverInfo.serverHomeDirectory & 'nv/', file = 'nerdvision.jar');
+        var nvUrl = 'https://repository.sonatype.org/service/local/artifact/maven/redirect';
+        cfhttp(method = "GET", getasbinary = "true", url = nvUrl, path = nvTargetDir, file = "nerdvision.jar") {
+        cfhttpparam(name='r', value='central-proxy');
+        cfhttpparam(name='g', value='com.nerdvision');
+        cfhttpparam(name='a', value='agent');
+        cfhttpparam(name='v', value='#settings.version#');
+    };
 
         // Append the java agent to the java args
-        serverInfo.JVMArgs &= ' "-javaagent:#replaceNoCase(serverInfo.serverHomeDirectory, '\', '\\', 'all')#nerdvision.jar=name=#serverInfo.name#,api.key=#serverInfo.apiKey#';
+        serverInfo.JVMArgs &= ' -javaagent:#replaceNoCase(serverInfo.serverHomeDirectory, '\', '\\', 'all')#/nv/nerdvision.jar=name=#serverInfo.name#,api.key=#settings.apiKey#';
     }
 }
