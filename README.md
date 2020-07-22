@@ -41,7 +41,7 @@ Set the other properties in the same way as required, e.g.
 
 ## Usage
 
-After having set at least an apikey the nerd.vision agent will be download and added to your server when you start the server with
+After having set at least an apikey the nerd.vision agent will be downloaded and added to your server when you start the server with
 
 ````
 [box] server start
