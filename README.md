@@ -1,7 +1,5 @@
 # nerdvision-commandbox
 
-**This is currently work in progress.**
-
 This module adds support to enable [nerd.vision](https://nerd.vision) on the servers you start inside [CommandBox](https://commandbox.ortusbooks.com).
 
 ## Installation
