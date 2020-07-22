@@ -10,9 +10,15 @@ This module adds support to enable [nerd.vision](https://nerd.vision) on the ser
 Install the module like so:
 
 ````
-[box] install <path to nerdvision-commandbox folder>
+box install <path to nerdvision-commandbox folder>
 ````
+### From GitHub
 
+If you have configured access via ssh keys install the module like so:
+
+````
+box install --verbose git+ssh:git@github.com:intergral/nerdvision-commandbox.git
+````
 
 ## Configuration
 
@@ -28,15 +34,15 @@ The modules has the following configuration properties:
 You can set an apikey to the nerd.vision module like so:
 
 ````
-[box] config set modules.nerdvision.apikey=<your api key>
+box config set modules.nerdvision.apikey=<your api key>
 ````
 
 Set the other properties in the same way as required, e.g.
 
 ````
-[box] config set modules.nerdvision.version=2.0.4
-[box] config set modules.nerdvision.name="My nerd.vision App"
-[box] config set modules.nerdvision.tags="foo=bar, level=42"
+box config set modules.nerdvision.version=2.0.4
+box config set modules.nerdvision.name="My nerd.vision App"
+box config set modules.nerdvision.tags="foo=bar, level=42"
 ````
 
 ## Usage
@@ -44,7 +50,7 @@ Set the other properties in the same way as required, e.g.
 After having set at least an apikey the nerd.vision agent will be downloaded and added to your server when you start the server with
 
 ````
-[box] server start
+box server start
 ````
 
 Once you server is running login to [nerd.vision](https://app.nerd.vision) and add a workspace for you application. Visit the [nerd.vision - Docs](https://docs.nerd.vision) site for additional information.
