@@ -1,13 +1,5 @@
 stages:
-  - build
   - publish
-
-set_version:
-  stage: build
-  only:
-    - tags
-  script:
-    - sed -ri "s|0.0.1|${CI_COMMIT_TAG}|" box.json
 
 publish:
   stage: publish
@@ -16,5 +8,6 @@ publish:
     - tags
   script:
     - box forgebox login ${FORGE_USER} ${FORGE_PASS}
+    - box bump version=${CI_COMMIT_TAG} tagVersion=false
     - box publish
 
