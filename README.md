@@ -20,7 +20,7 @@ box install --verbose git+ssh:git@github.com:intergral/nerdvision-commandbox.git
 
 ## Configuration
 
-The modules has the following configuration properties:
+The module has the following configuration properties:
 
 | Name   | Required | Default Value 
 |--------|:--------:|:-------------|
@@ -50,5 +50,7 @@ After having set at least an apikey the nerd.vision agent will be downloaded and
 ````
 box server start
 ````
+
+The download will only be done once.
 
 Once you server is running login to [nerd.vision](https://app.nerd.vision) and add a workspace for you application. Visit the [nerd.vision - Docs](https://docs.nerd.vision) site for additional information.
