@@ -4,18 +4,8 @@ This module adds support to enable [nerd.vision](https://nerd.vision) on the ser
 
 ## Installation
 
-### From a local directory
-Install the module like so:
-
 ````
-box install <path to nerdvision-commandbox folder>
-````
-### From GitHub
-
-If you have configured access via ssh keys install the module like so:
-
-````
-box install --verbose git+ssh:git@github.com:intergral/nerdvision-commandbox.git
+box install nerdvision
 ````
 
 ## Configuration
@@ -51,6 +41,15 @@ After having set at least an apikey the nerd.vision agent will be downloaded and
 box server start
 ````
 
-The download will only be done once.
+The download will only be done if the nerdvision.jar file cannot be found in the expected location.
 
 Once you server is running login to [nerd.vision](https://app.nerd.vision) and add a workspace for you application. Visit the [nerd.vision - Docs](https://docs.nerd.vision) site for additional information.
+
+## Uninstall
+
+The module does currently not provide logic to automatically uninstall nerd.vision from your server. To do this manually open your CommandBox servers.json file find the JVMArgs property and 
+- delete the nv/ directory inside your server home directory as shown in the JVMargs value 
+- remove the nerd.vision agent configuration from the JVMargs
+
+The same steps are required if you want to change to a different version of nerd.vision. 
+
