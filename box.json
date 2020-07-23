@@ -1,26 +1,26 @@
 {
-    "name":"nerd.vision",
-    "version":"1.0.0",
-    "author":"support@nerd.vision",
-    "location":"ForgeboxStorage",
-    "homepage":"https://www.nerd.vision",
-    "documentation":"https://docs.nerd.vision",
-    "repository":{
-        "type":"Git",
-        "URL":"https://github.com/intergral/nerdvision-commandbox"
+    "name": "nerd.vision",
+    "version": "0.0.1",
+    "author": "support@nerd.vision",
+    "location": "ForgeboxStorage",
+    "homepage": "https://www.nerd.vision",
+    "documentation": "https://docs.nerd.vision",
+    "repository": {
+        "type": "Git",
+        "URL": "https://github.com/intergral/nerdvision-commandbox"
     },
-    "bugs":"",
-    "slug":"nerdvision",
-    "shortDescription":"non-intrusive collaborative debugging and data streaming",
-    "description":"Install this module to add non-intrusive collaborative debugging and data streaming to your app.",
-    "instructions":"",
-    "changelog":"",
-    "type":"commandbox-modules",
-    "keywords":[
+    "bugs": "",
+    "slug": "nerdvision",
+    "shortDescription": "non-intrusive collaborative debugging and data streaming",
+    "description": "Install this module to add non-intrusive collaborative debugging and data streaming to your app.",
+    "instructions": "",
+    "changelog": "",
+    "type": "commandbox-modules",
+    "keywords": [
         "non intrusive debugging",
         "data streaming"
     ],
-    "private":false,
+    "private": false,
     "projectURL":"https://app.nerd.vision",
     "license":[
         {
