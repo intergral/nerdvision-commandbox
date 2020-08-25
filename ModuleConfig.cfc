@@ -20,7 +20,7 @@ component {
         if (!fileExists(nvTargetDir & 'nerdvision.jar')) {
             var nvUrl = 'https://repository.sonatype.org/service/local/artifact/maven/redirect';
             log.info('Downloading nerd.vision #settings.version# from https://repository.sonatype.org to directory #nvTargetDir#...');
-            cfhttp(method = "GET", getasbinary = "true", url = nvUrl, path = nvTargetDir, file = "nerdvision.jar") {
+            cfhttp(method = "GET", getasbinary = "true", url = nvUrl, path = nvTargetDir, file = "nerdvision.jar", timeout = "10") {
                 cfhttpparam(name = 'r', value = 'central-proxy');
                 cfhttpparam(name = 'g', value = 'com.nerdvision');
                 cfhttpparam(name = 'a', value = 'agent');
