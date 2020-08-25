@@ -32,7 +32,7 @@ component {
 
         // if we have an apikey set the agent args
         if( "#settings.apikey#" != "" ) {
-            var nvJVMArgs = "-javaagent:#replaceNoCase(serverInfo.serverHomeDirectory, '\', '\\', 'all')#/nv/nerdvision.jar=api.key=#trim(settings.apikey)#";
+            var nvJVMArgs = '"-javaagent:#replaceNoCase(serverInfo.serverHomeDirectory, '\', '\\', 'all')#/nv/nerdvision.jar=api.key=#trim(settings.apikey)#';
 
             if( "#settings.name#" != "" ) {
                 nvJVMArgs &= ",name=#trim(reReplace(settings.name, '\s', '', 'ALL'))#";
@@ -40,6 +40,7 @@ component {
             if( "#settings.tags#" != "" ) {
                 nvJVMArgs &= ",tags=#trim(reReplace(settings.tags, '\s', '', 'ALL'))#";
             }
+            nvJVMArgs &= '"';
             serverInfo.JVMArgs &= nvJVMArgs;
 
             log.info('Using nerd.vision JVM args #serverInfo.JVMArgs#');
