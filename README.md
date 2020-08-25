@@ -1,4 +1,4 @@
-[![Join us on Discord](https://img.shields.io/discord/588772895870943302?label=join%20us%20on%20discord&logo=discord&style=flat-square)](https://discord.gg/RkywqmU)
+[![Join us on Discord](https://img.shields.io/discord/588772895870943302?label=join%20us%20on%20discord&logo=discord&style=flat-square)](https://discord.gg/TxPG97U)
 [![Version](https://www.forgebox.io/api/v1/entry/nerdvision/badges/version)](https://www.forgebox.io/view/nerdvision)
 [![Downloads](https://www.forgebox.io/api/v1/entry/nerdvision/badges/downloads)](https://www.forgebox.io/view/nerdvision)
 [![Maven Central](https://img.shields.io/maven-central/v/com.nerdvision/agent.svg?label=Maven%20Central&style=flat-square)](https://search.maven.org/search?q=g:%22com.nerdvision%22%20AND%20a:%22agent%22)
