@@ -1,3 +1,7 @@
+[![Join us on Discord](https://img.shields.io/discord/588772895870943302?label=join%20us%20on%20discord&logo=discord&style=flat-square)](https://discord.gg/TxPG97U)
+[![Version](https://www.forgebox.io/api/v1/entry/nerdvision/badges/version)](https://www.forgebox.io/view/nerdvision)
+[![Downloads](https://www.forgebox.io/api/v1/entry/nerdvision/badges/downloads)](https://www.forgebox.io/view/nerdvision)
+[![Maven Central](https://img.shields.io/maven-central/v/com.nerdvision/agent.svg?label=Maven%20Central&style=flat-square)](https://search.maven.org/search?q=g:%22com.nerdvision%22%20AND%20a:%22agent%22)
 # nerdvision-commandbox
 
 This module adds support to enable [nerd.vision](https://nerd.vision) on the servers you start inside [CommandBox](https://commandbox.ortusbooks.com).
@@ -53,3 +57,6 @@ The module does currently not provide logic to automatically uninstall nerd.visi
 
 The same steps are required if you want to change to a different version of nerd.vision. 
 
+## Support
+
+To get support using nerdvision or the commandbox module please contact nerd.vision via email (support@nerd.vision) or join us on [Discord](https://discord.gg/TxPG97U).
