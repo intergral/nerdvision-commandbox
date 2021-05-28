@@ -34,8 +34,21 @@ Set the other properties in the same way as required, e.g.
 ````
 box config set modules.nerdvision.version=2.0.4
 box config set modules.nerdvision.name="My nerd.vision App"
-box config set modules.nerdvision.tags="foo=bar, level=42"
+box config set modules.nerdvision.tags="foo=bar; level=42"
 ````
+
+### server.json
+To use this module with server.json you can add the following to the root of the file:
+
+```json
+{
+  "nerdvision": {
+    "apikey": "${NV_API_KEY}",
+    "name": "${NV_NAME:commandbox}",
+    "tags": "${NV_TAGS:''}"
+  }
+}
+```
 
 ## Usage
 
