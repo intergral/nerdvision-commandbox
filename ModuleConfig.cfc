@@ -85,7 +85,7 @@ component {
 
         // if we have an apikey set the agent args
         if ("#apikey#" != "") {
-            var nvJVMArgs = '"-javaagent:#replaceNoCase(serverInfo.serverHomeDirectory, '\', '\\', 'all')#/nv/nerdvision.jar=api.key=#trim(apikey)#';
+            var nvJVMArgs = ' "-javaagent:#replaceNoCase(serverInfo.serverHomeDirectory, '\', '\\', 'all')#/nv/nerdvision.jar=api.key=#trim(apikey)#';
 
             if ("#name#" != "") {
                 nvJVMArgs &= ",name=#trim(reReplace(name, '\s', '', 'ALL'))#";

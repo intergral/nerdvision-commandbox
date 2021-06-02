@@ -37,8 +37,20 @@ box config set modules.nerdvision.name="My nerd.vision App"
 box config set modules.nerdvision.tags="foo=bar; level=42"
 ````
 
+### box.json
+Add nerdvision to your `box.json` as a dependency to ensure that the module is installed.
+
+```json
+{
+  "dependencies":{
+    "coldbox":"^6.4.0+1513",
+    "nerdvision":"1.0.5"
+  }
+}
+```
+
 ### server.json
-To use this module with server.json you can add the following to the root of the file:
+To use this module with `server.json` you can add the following to the root of the file:
 
 ```json
 {
