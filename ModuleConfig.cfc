@@ -42,22 +42,24 @@ component {
         logDebug( '******************************************' );
 
         // Create a folder for the nerdvision.jar
-        var nvTargetDir = serverInfo.serverHomeDirectory & '/nv/';
+        var nvTargetDir = serverInfo.serverHomeDirectory & '/nv';
         directoryCreate(nvTargetDir, true, true);
 
         var download = true;
         if (fileExists("#nvTargetDir#/nv_version")) {
             var nvVersion = fileRead("#nvTargetDir#/nv_version");
-            if ("#nvVersion#" == "#settings.version#" and fileExists(nvTargetDir & 'nerdvision.jar')) {
+            if ("#nvVersion#" == "#version#" and fileExists('#nvTargetDir#/nerdvision.jar')) {
                 download = false;
                 logDebug("Found existing nerdvision.jar (#nvVersion#) expecting (#version#) file in #nvTargetDir#");
             } else
                 if ("#version#" == "LATEST") {
                     var versionsXML = xmlParse("https://repo1.maven.org/maven2/com/nerdvision/agent/maven-metadata.xml");
                     var latestAvail = versionsXML.metadata.versioning.latest.XMLText;
-                    if ("#latestAvail#" != "#nvVersion#") {
-                        download = true;
+                    download ="#latestAvail#" != "#nvVersion#";
+                    if (download) {
                         logDebug("Found existing nerdvision.jar (#nvVersion#) updating to new version (#latestAvail#)");
+                    } else {
+                        logDebug("nerdvision.jar (#nvVersion#) already the latest version (#latestAvail#)");
                     }
                 } else {
                     logDebug("Found existing nerdvision.jar (#nvVersion#) updating to set version (#version#)");
