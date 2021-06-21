@@ -46,24 +46,41 @@ component {
         directoryCreate(nvTargetDir, true, true);
 
         var download = true;
-        if (fileExists("#nvTargetDir#/nv_version")) {
-            var nvVersion = fileRead("#nvTargetDir#/nv_version");
-            if ("#nvVersion#" == "#version#" and fileExists('#nvTargetDir#/nerdvision.jar')) {
-                download = false;
-                logDebug("Found existing nerdvision.jar (#nvVersion#) expecting (#version#) file in #nvTargetDir#");
-            } else
-                if ("#version#" == "LATEST") {
-                    var versionsXML = xmlParse("https://repo1.maven.org/maven2/com/nerdvision/agent/maven-metadata.xml");
-                    var latestAvail = versionsXML.metadata.versioning.latest.XMLText;
-                    download ="#latestAvail#" != "#nvVersion#";
-                    if (download) {
-                        logDebug("Found existing nerdvision.jar (#nvVersion#) updating to new version (#latestAvail#)");
-                    } else {
-                        logDebug("nerdvision.jar (#nvVersion#) already the latest version (#latestAvail#)");
-                    }
+        var versionsXML = "";
+        var latestAvail = "";
+        var jarExists = fileExists('#nvTargetDir#/nerdvision.jar');
+        var versionExists = fileExists("#nvTargetDir#/nv_version");
+        try {
+            versionsXML = xmlParse("https://repo1.maven.org/maven2/com/nerdvision/agent/maven-metadata.xml");
+            latestAvail = versionsXML.metadata.versioning.latest.XMLText;
+
+            if (versionExists) {
+                var nvVersion = fileRead("#nvTargetDir#/nv_version");
+                if ("#nvVersion#" == "#version#" and jarExists) {
+                    download = false;
+                    logDebug("Found existing nerdvision.jar (#nvVersion#) expecting (#version#) file in #nvTargetDir#");
                 } else {
-                    logDebug("Found existing nerdvision.jar (#nvVersion#) updating to set version (#version#)");
+                    if ("#version#" == "LATEST") {
+                        download = "#latestAvail#" != "#nvVersion#";
+                        if (download) {
+                            logDebug("Found existing nerdvision.jar (#nvVersion#) updating to new version (#latestAvail#)");
+                        } else {
+                            logDebug("nerdvision.jar (#nvVersion#) already at latest version (#latestAvail#)");
+                        }
+                    } else {
+                        logDebug("Found existing nerdvision.jar (#nvVersion#) updating to set version (#version#)");
+                    }
                 }
+            }
+        } catch (any e) {
+            download = false;
+            if (jarExists and versionExists) {
+                var nvVersion = fileRead("#nvTargetDir#/nv_version");
+                logError("Could not download nerdvision version list. Using existing version (#nvVersion#)");
+            } else {
+                logError("Could not download nerdvision and no jar installed. Disabling plugin.");
+                return;
+            }
         }
 
         if (download) {
@@ -77,8 +94,7 @@ component {
             };
             var versionInstalled = '';
             if ("#version#" == "LATEST") {
-                var versionsXML = xmlParse("https://repo1.maven.org/maven2/com/nerdvision/agent/maven-metadata.xml");
-                versionInstalled = versionsXML.metadata.versioning.latest.XMLText;
+                versionInstalled = latestAvail;
             } else {
                 versionInstalled = version;
             }
