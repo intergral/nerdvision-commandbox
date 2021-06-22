@@ -22,6 +22,7 @@ The module has the following configuration properties:
 | version| no       | LATEST       |
 | name   | no       | hostname     |
 | tags   | no       |              |
+| enable | no       | true         |
 
 You can set an apikey to the nerd.vision module like so:
 
