@@ -2,6 +2,7 @@ component {
 
     function configure() {
         settings = {
+            enable = true,
             version = 'LATEST',
             apikey = "",
             name = "",
@@ -27,10 +28,16 @@ component {
         systemSettings.expandDeepSystemSettings( serverJSON );
         systemSettings.expandDeepSystemSettings( defaults );
 
+        var nvEnable = serverJSON.nerdvision.enable ?: defaults.nerdvision.enable ?: settings.enable;
         var version =  serverJSON.nerdvision.version ?: defaults.nerdvision.version ?: settings.version;
         var apikey =  serverJSON.nerdvision.apikey ?: defaults.nerdvision.apikey ?: settings.apikey;
         var name =  serverJSON.nerdvision.name ?: defaults.nerdvision.name ?: settings.name;
         var tags =  serverJSON.nerdvision.tags ?: defaults.nerdvision.tags ?: settings.tags;
+
+        if (isBoolean(nvEnable) && !nvEnable) {
+            logDebug('NerdVision is disabled');
+            return;
+        }
 
         if ("#apikey#" == "") {
             logError('NerdVision apikey not set.');
